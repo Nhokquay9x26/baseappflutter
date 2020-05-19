@@ -1,0 +1,9 @@
+{
+  "title": "Base App Flutter",
+  "welcome_back": "Chào mừng quay trở lại!",
+  "skip": "Skip",
+  "auth": {
+    "email": "Email",
+    "password": "Mật khẩu"
+  }
+}
