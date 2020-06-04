@@ -1,39 +1,53 @@
-import 'package:base/src/routers/AppRoutes.dart';
-import 'package:base/src/screens/auth/login/LoginScreens.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:base/mainProvider.dart';
+import 'package:base/src/api/ApiService.dart';
+import 'package:base/src/routers/RouterName.dart';
+import 'package:base/src/routers/Routers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:logger/logger.dart';
+import 'package:provider_architecture/_viewmodel_provider.dart';
+
+import 'generated/l10n.dart';
 
 void main() {
-  AppRoutes.setupRouter();
-  runApp(EasyLocalization(
-    child: MyApp(),
-    supportedLocales: [
-      Locale('en', 'US'),
-      Locale('vn', 'VN'),
-    ],
-    path: "lib/res/strings",
-  ));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(fontFamily: 'Roboto'),
-      initialRoute: '/',
-      onGenerateRoute: AppRoutes.router.generator,
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        EasyLocalization.of(context).delegate,
-      ],
-      supportedLocales: EasyLocalization.of(context).supportedLocales,
-      locale: EasyLocalization.of(context).locale,
-      home: LoginScreen(),
+    return ViewModelProvider.withConsumer(
+      builder: (ctx, provider, _) {
+        return MaterialApp(
+          title: 'Flutter',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(fontFamily: 'Roboto'),
+          initialRoute: RouterName.login,
+          onGenerateRoute: Routers.generateRoute,
+          localizationsDelegates: [
+            S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: S.delegate.supportedLocales,
+        );
+      },
+      viewModelBuilder: () => MainProvider(),
+      onModelReady: (model) => model.initialise(),
     );
   }
+}
+
+void _openLoadingDialog(BuildContext context) {
+  showDialog(
+    barrierDismissible: false,
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        content: CircularProgressIndicator(),
+      );
+    },
+  );
 }

@@ -29,14 +29,34 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^0.1.3
-  keyboard_dismisser: ^1.0.2
-  easy_localization: ^2.3.0
-  fluro: ^1.6.3
+  cupertino_icons: any
+  keyboard_dismisser: any
+  provider_architecture: any
+  device_info: any
+  floor: any
+  shared_preferences: any
+  sqflite: any
+  retrofit: any
+  logger: any
+  get_it: any
+  dio: any
+  pretty_dio_logger: any
+  percent_indicator: any
+  google_maps_flutter: any
+  image_picker: any
+  flutter_datetime_picker: any
+  autocomplete_textfield: any
+  provider: any
+  json_annotation: any
+  geolocator: any
+  http: any
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  retrofit_generator: any
+  build_runner: any
+  json_serializable: any
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -50,9 +70,13 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
+  fonts:
+    - family: IconFont
+      fonts:
+        - asset: lib/res/images/svg/fonts/IconFont.ttf
+
   assets:
-     - lib/res/strings/
-     - lib/res/images/
+    - lib/res/images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -80,3 +104,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_intl:
+  enabled: true

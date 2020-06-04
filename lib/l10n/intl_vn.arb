@@ -1,0 +1,10 @@
+{
+  "@@locale": "vn",
+  "title": "MR App",
+  "username": "Tên đăng nhập",
+  "password": "Mật khẩu",
+  "forgot_password": "Quên mật khẩu",
+  "login": "Đăng nhập",
+  "phone": "Số điện thoại",
+  "error_invalid": "Vui lòng nhập {field}"
+}

@@ -1,3 +1,3 @@
 import 'package:base/src/utils/Color.dart';
 
-final COLOR_APP = colorFromHex("#27C0A0");
+final COLOR_APP = colorFromHex("#20BEC7");

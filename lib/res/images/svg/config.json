@@ -1,0 +1,28 @@
+{
+  "name": "IconFont",
+  "css_prefix_text": "",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "64abb7c56aefca89046bb69f7251d2e2",
+      "css": "calendar",
+      "code": 59392,
+      "src": "elusive"
+    },
+    {
+      "uid": "c5dae27e563af547739c37198a00a389",
+      "css": "wallet",
+      "code": 62805,
+      "src": "fontawesome5"
+    },
+    {
+      "uid": "77938cee65fd7daecdcc8ec869261ebd",
+      "css": "clipboard_list",
+      "code": 62573,
+      "src": "fontawesome5"
+    }
+  ]
+}
