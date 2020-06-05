@@ -1,9 +1,9 @@
 import 'package:base/src/api/ApiRequest.dart';
-import 'package:base/src/api/response/BaseResponse.dart';
+import 'package:base/src/api/response/Meta.dart';
 import 'package:base/src/db/model/AuthModel.dart';
 
 class ApiService {
-  static Future<BaseResponse> login(AuthModel body,
+  static Future<Meta> login(AuthModel body,
       {Function onError, Function onSuccess}) async {
     ApiRequest().postApi(
         url: "login",
@@ -18,7 +18,7 @@ class ApiService {
     return null;
   }
 
-  static Future<BaseResponse> validateOTP(AuthModel body,
+  static Future<Meta> validateOTP(AuthModel body,
       {Function onError, Function onSuccess}) async {
     ApiRequest().postApi(
         url: "login",

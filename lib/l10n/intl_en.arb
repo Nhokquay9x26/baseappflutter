@@ -74,5 +74,7 @@
   "content": "Nội dung",
   "date_start": "Ngày bắt đầu",
   "date_end": "Ngày kết thúc",
-  "choose_month": "Chọn tháng"
+  "choose_month": "Chọn tháng",
+  "message_miss_connection": "Kết nối mạng lỗi",
+  "message_process_failed": "Kết nối mạng lỗi"
 }

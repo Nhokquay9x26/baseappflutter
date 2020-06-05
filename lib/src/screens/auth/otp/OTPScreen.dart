@@ -5,6 +5,7 @@ import 'package:base/res/styles/Styles.dart';
 import 'package:base/src/BaseApp.dart';
 import 'package:base/src/components/ButtonApp.dart';
 import 'package:base/src/components/TextApp.dart';
+import 'package:base/src/constant/Constant.dart';
 import 'package:base/src/screens/auth/otp/OTPViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider_architecture/provider_architecture.dart';
@@ -39,7 +40,11 @@ class OTPScreen extends BaseApp {
                         height: height20,
                       ),
                       Form(
+                        autovalidate: true,
                         key: model.formKey,
+                        onChanged: () {
+                          model.setIsValid();
+                        },
                         child: Column(
                           children: <Widget>[
                             InputOTP(),
@@ -59,9 +64,11 @@ class OTPScreen extends BaseApp {
                       ),
                       ButtonApp(
                         text: S.of(context).send_password,
-                        onPressed: () {
-                          // TODO Navigation Login
-                        },
+                        onPressed: model.isValid
+                            ? () async {
+                                model.resetPassword();
+                              }
+                            : null,
                       ),
                     ]),
               ),
@@ -103,11 +110,13 @@ class InputPassword extends ProviderWidget<OTPViewModel> {
   Widget build(BuildContext context, OTPViewModel model) {
     // TODO: implement build
     return TextFormField(
-      validator: (password) {
-        if (password.isEmpty) {
+      validator: (value) {
+        if (value.isEmpty) {
           return S
               .of(context)
               .error_invalid(S.of(context).password.toLowerCase());
+        } else if (value.length < MIN_LENGTH_PASSWORD) {
+          return S.of(context).error_password_min_max;
         }
         return null;
       },
@@ -130,11 +139,13 @@ class InputRePassword extends ProviderWidget<OTPViewModel> {
   Widget build(BuildContext context, OTPViewModel model) {
     // TODO: implement build
     return TextFormField(
-      validator: (password) {
-        if (password.isEmpty) {
+      validator: (value) {
+        if (value.isEmpty) {
           return S
               .of(context)
               .error_invalid(S.of(context).password.toLowerCase());
+        } else if (value.length < MIN_LENGTH_PASSWORD) {
+          return S.of(context).error_password_min_max;
         }
         return null;
       },

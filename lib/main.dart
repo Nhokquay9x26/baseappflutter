@@ -1,20 +1,29 @@
 import 'package:base/mainProvider.dart';
-import 'package:base/src/api/ApiService.dart';
 import 'package:base/src/routers/RouterName.dart';
 import 'package:base/src/routers/Routers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:logger/logger.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
 import 'package:provider_architecture/_viewmodel_provider.dart';
 
 import 'generated/l10n.dart';
+import 'src/utils/Locator.dart';
+import 'src/utils/SharePrefs.dart';
 
-void main() {
+void main() async {
+  Provider.debugCheckInvalidValueType = null;
+  WidgetsFlutterBinding.ensureInitialized();
+  setupLocator();
+  await locator<SharePrefs>().setup();
+
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+  bool isName = false;
+
   @override
   Widget build(BuildContext context) {
     return ViewModelProvider.withConsumer(
@@ -23,7 +32,7 @@ class MyApp extends StatelessWidget {
           title: 'Flutter',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(fontFamily: 'Roboto'),
-          initialRoute: RouterName.login,
+          initialRoute: isName ? RouterName.home : RouterName.login,
           onGenerateRoute: Routers.generateRoute,
           localizationsDelegates: [
             S.delegate,
@@ -49,5 +58,12 @@ void _openLoadingDialog(BuildContext context) {
         content: CircularProgressIndicator(),
       );
     },
+  );
+}
+
+void showLongToast(String message) {
+  Fluttertoast.showToast(
+    msg: message,
+    toastLength: Toast.LENGTH_LONG,
   );
 }

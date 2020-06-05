@@ -1,8 +1,12 @@
-import 'dart:convert';
-
-import 'package:base/src/api/ApiService.dart';
-import 'package:base/src/db/model/AuthModel.dart';
+import 'package:base/main.dart';
+import 'package:base/mainProvider.dart';
+import 'package:base/src/api/api_service.dart';
+import 'package:base/src/api/body/AuthBody.dart';
+import 'package:base/src/routers/RouterName.dart';
+import 'package:base/src/utils/Locator.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 
 class LoginViewModel extends ChangeNotifier {
   TextEditingController controllerUsername = TextEditingController();
@@ -10,10 +14,13 @@ class LoginViewModel extends ChangeNotifier {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool isValid = false;
   BuildContext context;
+  final Api apiService = locator<Api>();
 
   LoginViewModel(this.context);
 
   void initialise() {
+    controllerUsername.text = 'test_mr';
+    controllerPassword.text = '123123';
     controllerUsername.addListener(() {
       if (!formKey.currentState.validate()) {
         return;
@@ -33,22 +40,23 @@ class LoginViewModel extends ChangeNotifier {
   }
 
   void login() async {
+    final deviceData =
+        Provider.of<MainProvider>(context, listen: false).deviceData;
     final username = controllerUsername.text;
     final password = controllerPassword.text;
-    final authModel = AuthModel();
-    authModel.login = username;
-    authModel.password = password;
-    authModel.imei = "012345544";
-    authModel.phone_info = "iphone6";
-    await ApiService.login(authModel, onSuccess: (data) {
-      print("Data " + jsonDecode(data));
-    }, onError: (msg) {
-      print(msg);
-    });
-//    Provider.of<ApiService>(context, listen: false)
-//        .postLogin()
-//        .then((value) => {print(value)})
-//        .catchError((onError) => {print(onError.toString())});
-//    Navigator.pushNamed(context, RouterName.home);
+    final body = AuthBody();
+    body.login = username;
+    body.password = password;
+    body.imei = "012345544";
+    body.phone_info = "iphone6";
+    await apiService.client
+        .postLogin(body)
+        .then((value) => {
+              if (value.meta.status)
+                {Navigator.pushReplacementNamed(context, RouterName.home)}
+              else
+                {showLongToast(value.meta.message)}
+            })
+        .catchError((onError) => print('error ${onError.toString()}'));
   }
 }

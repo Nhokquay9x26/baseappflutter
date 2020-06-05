@@ -701,6 +701,24 @@ class S {
       args: [],
     );
   }
+
+  String get message_miss_connection {
+    return Intl.message(
+      'Kết nối mạng lỗi',
+      name: 'message_miss_connection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get message_process_failed {
+    return Intl.message(
+      'Kết nối mạng lỗi',
+      name: 'message_process_failed',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

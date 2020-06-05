@@ -4,7 +4,6 @@ import 'package:base/res/styles/Styles.dart';
 import 'package:base/src/BaseApp.dart';
 import 'package:base/src/components/ButtonApp.dart';
 import 'package:base/src/components/TextApp.dart';
-import 'package:base/src/routers/RouterName.dart';
 import 'package:base/src/screens/auth/forgot_password/ForgotPasswordViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider_architecture/provider_architecture.dart';
@@ -37,16 +36,23 @@ class ForgotPasswordScreen extends BaseApp {
                   SizedBox(
                     height: height20,
                   ),
-                  Form(key: model.formKey, child: InputPhone()),
+                  Form(
+                      autovalidate: true,
+                      key: model.formKey,
+                      onChanged: () {
+                        model.setIsValid();
+                      },
+                      child: InputPhone()),
                   SizedBox(
                     height: height30,
                   ),
                   ButtonApp(
                     text: S.of(context).send_otp,
-                    onPressed: () {
-                      // TODO Navigation Login
-                      Navigator.pushNamed(context, RouterName.otp);
-                    },
+                    onPressed: model.isValid
+                        ? () async {
+                      model.sendOTP();
+                    }
+                        : null,
                   ),
                 ]),
           ),
@@ -68,7 +74,6 @@ class InputPhone extends ProviderWidget<ForgotPasswordViewModel> {
         return null;
       },
       controller: model.controllerPhone,
-      obscureText: true,
       keyboardType: TextInputType.phone,
       decoration: InputDecoration(
           prefixIcon: Icon(Icons.phone_iphone),

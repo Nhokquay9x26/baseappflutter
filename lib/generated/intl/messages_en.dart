@@ -64,6 +64,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "manager_check_in_out" : MessageLookupByLibrary.simpleMessage("Thống kê quên check in/out"),
     "manager_holiday" : MessageLookupByLibrary.simpleMessage("Quản lý phép"),
     "manager_requirement" : MessageLookupByLibrary.simpleMessage("Quản lý yêu cầu"),
+    "message_miss_connection" : MessageLookupByLibrary.simpleMessage("Kết nối mạng lỗi"),
+    "message_process_failed" : MessageLookupByLibrary.simpleMessage("Kết nối mạng lỗi"),
     "miss_check_in" : MessageLookupByLibrary.simpleMessage("Check in"),
     "miss_check_in_out" : MessageLookupByLibrary.simpleMessage("Check in/Out"),
     "miss_check_out" : MessageLookupByLibrary.simpleMessage("Check out"),

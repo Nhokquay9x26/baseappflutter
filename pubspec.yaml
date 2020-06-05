@@ -50,6 +50,7 @@ dependencies:
   json_annotation: any
   geolocator: any
   http: any
+  fluttertoast: ^4.0.1
 
 dev_dependencies:
   flutter_test:

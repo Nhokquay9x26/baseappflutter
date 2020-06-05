@@ -30,13 +30,13 @@ class ApiRequest {
       try {
         final json = jsonDecode(response.body);
         final result = json['result'];
-        final meta = Meta.formJson(result['meta']);
-        if (meta.status) {
-          print("data " + result['data'].toString());
-          return result['data'];
-        } else {
-          handleError(meta);
-        }
+//        final meta = Meta.formJson(result['meta']);
+//        if (meta.status) {
+//          print("data " + result['data'].toString());
+//          return result['data'];
+//        } else {
+//          handleError(meta);
+//        }
       } catch (e) {
         print(e.toString());
       }
