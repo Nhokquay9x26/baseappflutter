@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "839750081455",
+    "firebase_url": "https://rm-app-278301.firebaseio.com",
+    "project_id": "rm-app-278301",
+    "storage_bucket": "rm-app-278301.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:839750081455:android:1405c1ab4c6e8ed07b2d5a",
+        "android_client_info": {
+          "package_name": "media.flutter.base"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "839750081455-ct4o6dnssp6p9tgb5u33qhc8d352mkmu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "media.flutter.base",
+            "certificate_hash": "e160321072321efc32f4f078443a124a12501520"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFisKqNFgzmkNq_Sznqrmd0qJbI_MZtac"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "839750081455-2e5qt4v8u5ldako1ffsovd1a5g1pkpfj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mevacon.mvc"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

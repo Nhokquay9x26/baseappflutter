@@ -7,7 +7,6 @@ import 'package:base/src/utils/Locator.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
 class LoginViewModel extends ChangeNotifier {
   TextEditingController controllerUsername = TextEditingController();
   TextEditingController controllerPassword = TextEditingController();
@@ -19,13 +18,12 @@ class LoginViewModel extends ChangeNotifier {
   LoginViewModel(this.context);
 
   void initialise() {
-    controllerUsername.text = 'test_mr';
-    controllerPassword.text = '123123';
+//    controllerUsername.text = 'test_mr';
+//    controllerPassword.text = '123456';
     controllerUsername.addListener(() {
       if (!formKey.currentState.validate()) {
         return;
       }
-      notifyListeners();
     });
     controllerPassword.addListener(() {
       if (!formKey.currentState.validate()) {
@@ -49,14 +47,20 @@ class LoginViewModel extends ChangeNotifier {
     body.password = password;
     body.imei = "012345544";
     body.phone_info = "iphone6";
-    await apiService.client
-        .postLogin(body)
-        .then((value) => {
-              if (value.meta.status)
-                {Navigator.pushReplacementNamed(context, RouterName.home)}
-              else
-                {showLongToast(value.meta.message)}
-            })
-        .catchError((onError) => print('error ${onError.toString()}'));
+    openLoadingDialog(context);
+
+    await apiService.client.postLogin(body).then((value) {
+      Navigator.pop(context);
+      if (value.meta.status) {
+        showLongToast(value.data.otp);
+        Navigator.pushNamed(context, RouterName.loginOTP);
+      } else {
+        showLongToast(value.meta.message);
+      }
+    }).catchError((onError) {
+      Navigator.pop(context);
+//      showLongToast(onError);
+      return print('error $onError');
+    });
   }
 }

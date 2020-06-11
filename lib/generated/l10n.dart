@@ -36,6 +36,15 @@ class S {
     );
   }
 
+  String get loading {
+    return Intl.message(
+      'Loading ...',
+      name: 'loading',
+      desc: '',
+      args: [],
+    );
+  }
+
   String get username {
     return Intl.message(
       'Tên đăng nhập',
@@ -76,6 +85,15 @@ class S {
     return Intl.message(
       'Đăng nhập',
       name: 'login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get login_otp {
+    return Intl.message(
+      'Xác thực đăng nhập',
+      name: 'login_otp',
       desc: '',
       args: [],
     );
@@ -542,7 +560,7 @@ class S {
 
   String get holiday_infor {
     return Intl.message(
-      'Thông tin ngày nghĩ',
+      'Thông tin ngày nghỉ',
       name: 'holiday_infor',
       desc: '',
       args: [],
@@ -551,7 +569,7 @@ class S {
 
   String get holiday_category {
     return Intl.message(
-      'Loại nghĩ phép',
+      'Loại nghỉ phép',
       name: 'holiday_category',
       desc: '',
       args: [],
@@ -569,7 +587,7 @@ class S {
 
   String get holiday_used {
     return Intl.message(
-      'Đã nghĩ',
+      'Đã nghỉ',
       name: 'holiday_used',
       desc: '',
       args: [],
@@ -578,7 +596,7 @@ class S {
 
   String get request_quit {
     return Intl.message(
-      'Nghĩ việc',
+      'Nghỉ việc',
       name: 'request_quit',
       desc: '',
       args: [],
@@ -614,7 +632,7 @@ class S {
 
   String get request_holiday {
     return Intl.message(
-      'Nghĩ phép',
+      'Nghỉ phép',
       name: 'request_holiday',
       desc: '',
       args: [],
@@ -623,7 +641,7 @@ class S {
 
   String get reason_quit_job {
     return Intl.message(
-      'Lý do nghĩ',
+      'Lý do nghỉ',
       name: 'reason_quit_job',
       desc: '',
       args: [],

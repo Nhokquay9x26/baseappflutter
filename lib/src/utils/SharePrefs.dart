@@ -1,97 +1,36 @@
-import 'dart:convert';
+import 'dart:ui';
 
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:hive/hive.dart';
+import 'package:path_provider/path_provider.dart';
 
 class SharePrefs {
-  SharedPreferences _prefs;
+  final String AUTH_MANAGER = 'auth_manager';
+  final String PREFS_LANGUAGE = 'language';
+  final String PREFS_TOKEN = 'token';
 
-  DateTime get expiresDate {
-    if (!_prefs.containsKey('expiresDate')) {
-      return null;
-    }
+  Box boxAuthManager;
+  Box boxUserManager;
 
-    String value = _prefs.getString('expiresDate');
-    return DateTime.tryParse(value);
+  Future init() async {
+    final appDocumentDir = await getApplicationDocumentsDirectory();
+    print("path $appDocumentDir");
+    Hive.init(appDocumentDir.path);
+    boxUserManager = await Hive.openBox('user_manager');
+    boxAuthManager = await Hive.openBox(AUTH_MANAGER);
   }
 
-  set expiresDate(DateTime date) {
-    assert(date != null);
-    _prefs.setString('expiresDate', date.toString());
+  Locale get locale {
+    final String key = boxUserManager.get(PREFS_LANGUAGE, defaultValue: 'en');
+    return Locale(key, "");
   }
 
-  String get token {
-    if (!_prefs.containsKey('token')) {
-      return null;
-    }
-
-    return _prefs.getString('token');
+  set language(String lang) {
+    boxUserManager.put(PREFS_LANGUAGE, lang);
   }
+
+  String get token => boxAuthManager.get(PREFS_TOKEN);
 
   set token(String token) {
-    _prefs.setString('token', token);
-  }
-
-  String get lang {
-    if (!_prefs.containsKey('lang')) {
-      return null;
-    }
-
-    return _prefs.getString('lang');
-  }
-
-  String get loginType {
-    if (!_prefs.containsKey('login_type')) {
-      return null;
-    }
-
-    return _prefs.getString('login_type');
-  }
-
-  set loginType(String type) {
-    _prefs.setString('login_type', type);
-  }
-
-  bool get firstTime {
-    if (!_prefs.containsKey('firstTime')) {
-      return true;
-    }
-
-    final value = _prefs.getString('firstTime');
-
-    return value != '1';
-  }
-
-  set firstTime(bool first) {
-    _prefs.setString('firstTime', first ? '1' : '0');
-  }
-
-  set lang(String lang) {
-    _prefs.setString('lang', lang);
-  }
-
-  Map get user {
-    if (!_prefs.containsKey('user')) {
-      return null;
-    }
-
-    try {
-      return json.decode(_prefs.getString('user'));
-    } catch (e) {
-      return null;
-    }
-  }
-
-  set user(Map userData) {
-    _prefs.setString('user', jsonEncode(userData));
-  }
-
-  Future setup() async {
-    _prefs = await SharedPreferences.getInstance();
-  }
-
-  void removeUser() {
-    _prefs.remove('token');
-    _prefs.remove('expiresDate');
-    _prefs.remove('user');
+    boxAuthManager.put(PREFS_TOKEN, token);
   }
 }

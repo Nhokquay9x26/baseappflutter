@@ -1,25 +1,46 @@
 import 'dart:io';
 
+import 'package:base/src/api/response/auth_response.dart';
 import 'package:device_info/device_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 
+import 'main.dart';
+import 'src/api/api_service.dart';
+import 'src/utils/Locator.dart';
+import 'src/utils/SharePrefs.dart';
+
 class MainProvider extends ChangeNotifier {
-  String username = "AAA";
   double latitude;
   double longitude;
   String deviceid;
   String imei;
-  String meid;
   final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+  final sharePrefs = locator<SharePrefs>();
+  AuthResponse authResponse;
   Map<String, dynamic> deviceData;
   String token;
+  final Api apiService = locator<Api>();
 
   void initialise() async {
     await initPlatformState();
-    token = "";
-//    initGeolocation();
+    initGeolocation();
+    token = sharePrefs.token;
+    print("token start $token");
+    if (token != null) {
+      await apiService.client
+          .getProfile()
+          .then((value) => {
+                if (value.meta.status)
+                  {
+                    authResponse = value.data,
+                  }
+                else
+                  {showLongToast(value.meta.message)}
+              })
+          .catchError((onError) => {print('error ${onError.toString()}')});
+    }
   }
 
   Future<void> initPlatformState() async {

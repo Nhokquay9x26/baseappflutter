@@ -10,10 +10,11 @@ SurveryModel _$SurveryModelFromJson(Map<String, dynamic> json) {
   return SurveryModel(
     question_id: json['question_id'] as int,
     question_str: json['question_str'] as String,
-    answer_list: json['answer_list'] == null
-        ? null
-        : SurveryAnswerModel.fromJson(
-            json['answer_list'] as Map<String, dynamic>),
+    answer_list: (json['answer_list'] as List)
+        ?.map((e) => e == null
+            ? null
+            : SurveryAnswerModel.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
   );
 }
 

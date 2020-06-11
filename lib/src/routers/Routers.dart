@@ -1,6 +1,7 @@
 import 'package:base/src/screens/auth/forgot_password/ForgotPasswordScreen.dart';
 import 'package:base/src/screens/auth/login/LoginScreen.dart';
 import 'package:base/src/screens/auth/otp/OTPScreen.dart';
+import 'package:base/src/screens/auth/otp_login/otp_login_screen.dart';
 import 'package:base/src/screens/home/HomeScreen.dart';
 import 'package:base/src/screens/home/check_in_out/capture_check_in_out/CaptureCheckInOutScreen.dart';
 import 'package:base/src/screens/home/check_in_out/survery/SurveryScreen.dart';
@@ -22,6 +23,8 @@ class Routers {
     switch (settings.name) {
       case 'Login':
         return MaterialPageRoute(builder: (context) => LoginScreen());
+      case 'LoginOTP':
+        return MaterialPageRoute(builder: (context) => OTPLoginScreen());
       case 'ForgotPassword':
         return MaterialPageRoute(builder: (context) => ForgotPasswordScreen());
       case 'Otp':

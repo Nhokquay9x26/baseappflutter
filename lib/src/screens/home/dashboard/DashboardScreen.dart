@@ -62,7 +62,7 @@ class HeaderProfileWidget extends ProviderWidget<DashboardViewModel> {
               height: width10,
             ),
             TextApp(
-              S.of(context).holiday_count(1),
+              S.of(context).holiday_count(model.authResponse.holiday_total),
               style: TextStyle(fontSize: font12),
             )
           ],
@@ -74,7 +74,7 @@ class HeaderProfileWidget extends ProviderWidget<DashboardViewModel> {
               size: width50,
             ),
             TextApp(
-              "Nguyễn Văn A",
+              model.authResponse.name,
               style: TextStyle(fontSize: font16),
             )
           ],
@@ -90,7 +90,7 @@ class HeaderProfileWidget extends ProviderWidget<DashboardViewModel> {
               height: width10,
             ),
             TextApp(
-              S.of(context).score(20),
+              S.of(context).score(model.authResponse.point),
               style: TextStyle(fontSize: font12),
             )
           ],
@@ -116,9 +116,10 @@ class KPIWidget extends ProviderWidget<DashboardViewModel> {
               animation: true,
               lineHeight: width18,
               animationDuration: 1000,
-              percent: model.kpi / 100,
+              percent: model.authResponse.kpi_achieve /
+                  (model.authResponse.kpi_total | 100),
               center: TextApp(
-                "${model.kpi} %",
+                "${model.authResponse.kpi_achieve} %",
                 style: TextStyle(fontSize: font12, color: Colors.white),
               ),
               linearStrokeCap: LinearStrokeCap.roundAll,

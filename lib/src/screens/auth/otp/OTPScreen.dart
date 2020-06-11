@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:base/generated/l10n.dart';
 import 'package:base/res/styles/Images.dart';
 import 'package:base/res/styles/Sizes.dart';
@@ -55,7 +57,7 @@ class OTPScreen extends BaseApp {
                             SizedBox(
                               height: height20,
                             ),
-                            InputPassword(),
+                            InputRePassword(),
                           ],
                         ),
                       ),

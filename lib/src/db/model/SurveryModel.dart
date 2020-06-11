@@ -6,7 +6,7 @@ part 'SurveryModel.g.dart';
 class SurveryModel {
   int question_id;
   String question_str;
-  SurveryAnswerModel answer_list;
+  List<SurveryAnswerModel> answer_list;
 
   SurveryModel({this.question_id, this.question_str, this.answer_list});
 

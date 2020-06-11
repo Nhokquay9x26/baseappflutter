@@ -1,6 +1,10 @@
 import 'package:base/mainProvider.dart';
+import 'package:base/res/styles/Colors.dart';
+import 'package:base/res/styles/Sizes.dart';
+import 'package:base/src/components/TextApp.dart';
 import 'package:base/src/routers/RouterName.dart';
 import 'package:base/src/routers/Routers.dart';
+import 'package:base/src/utils/push_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -15,24 +19,22 @@ void main() async {
   Provider.debugCheckInvalidValueType = null;
   WidgetsFlutterBinding.ensureInitialized();
   setupLocator();
-  await locator<SharePrefs>().setup();
-
+  await locator<SharePrefs>().init();
+  await PushNotificationsManager().init();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
-  bool isName = false;
-
   @override
   Widget build(BuildContext context) {
-    return ViewModelProvider.withConsumer(
-      builder: (ctx, provider, _) {
+    return ViewModelProvider<MainProvider>.withConsumer(
+      builder: (ctx, model, child) {
         return MaterialApp(
           title: 'Flutter',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(fontFamily: 'Roboto'),
-          initialRoute: isName ? RouterName.home : RouterName.login,
+          initialRoute: RouterName.login ,
           onGenerateRoute: Routers.generateRoute,
           localizationsDelegates: [
             S.delegate,
@@ -49,14 +51,28 @@ class MyApp extends StatelessWidget {
   }
 }
 
-void _openLoadingDialog(BuildContext context) {
+void openLoadingDialog(BuildContext context) {
   showDialog(
     barrierDismissible: false,
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        content: CircularProgressIndicator(),
-      );
+          content: Container(
+        height: width100,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(new Radius.circular(width20)),
+        ),
+        child: Center(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextApp(S.of(context).loading),
+            CircularProgressIndicator(
+              backgroundColor: COLOR_APP,
+            )
+          ],
+        )),
+      ));
     },
   );
 }

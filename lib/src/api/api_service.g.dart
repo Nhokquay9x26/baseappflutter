@@ -9,7 +9,7 @@ part of 'api_service.dart';
 class _RestClient implements RestClient {
   _RestClient(this._dio, {this.baseUrl}) {
     ArgumentError.checkNotNull(_dio, '_dio');
-    this.baseUrl ??= 'http://45.77.32.245:8888/mr/';
+    this.baseUrl ??= 'http://13.76.194.28:8069/mr/';
   }
 
   final Dio _dio;
@@ -30,7 +30,26 @@ class _RestClient implements RestClient {
             extra: _extra,
             baseUrl: baseUrl),
         data: _data);
-    final value = BaseResponse<AuthResponse>.fromJson(_result.data);
+    final value = OTPRes.fromJson(_result.data);
+    return value;
+  }
+
+  @override
+  postValidateToken(params) async {
+    ArgumentError.checkNotNull(params, 'params');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = {'params': params};
+    final Response<Map<String, dynamic>> _result = await _dio.request(
+        'validate_token',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'POST',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    final value = AuthRes.fromJson(_result.data);
     return value;
   }
 
@@ -49,7 +68,7 @@ class _RestClient implements RestClient {
             extra: _extra,
             baseUrl: baseUrl),
         data: _data);
-    final value = BaseResponse<AuthResponse>.fromJson(_result.data);
+    final value = OTPRes.fromJson(_result.data);
     return value;
   }
 
@@ -68,7 +87,25 @@ class _RestClient implements RestClient {
             extra: _extra,
             baseUrl: baseUrl),
         data: _data);
-    final value = BaseResponse<AuthResponse>.fromJson(_result.data);
+    final value = AuthRes.fromJson(_result.data);
+    return value;
+  }
+
+  @override
+  getProfile() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final Response<Map<String, dynamic>> _result = await _dio.request(
+        'get_profile',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'GET',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    final value = AuthRes.fromJson(_result.data);
     return value;
   }
 }

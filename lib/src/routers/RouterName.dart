@@ -1,5 +1,6 @@
 class RouterName {
   static final String login = 'Login';
+  static final String loginOTP = 'LoginOTP';
   static final String forgotPassword = 'ForgotPassword';
   static final String otp = 'Otp';
   static final String home = 'Home';

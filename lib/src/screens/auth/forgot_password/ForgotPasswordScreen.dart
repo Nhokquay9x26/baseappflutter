@@ -1,4 +1,5 @@
 import 'package:base/generated/l10n.dart';
+import 'package:base/res/styles/Images.dart';
 import 'package:base/res/styles/Sizes.dart';
 import 'package:base/res/styles/Styles.dart';
 import 'package:base/src/BaseApp.dart';
@@ -29,7 +30,7 @@ class ForgotPasswordScreen extends BaseApp {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Image.asset(
-                    "lib/res/images/logo.jpeg",
+                    logo,
                     width: width200,
                     height: width150,
                   ),
@@ -50,8 +51,8 @@ class ForgotPasswordScreen extends BaseApp {
                     text: S.of(context).send_otp,
                     onPressed: model.isValid
                         ? () async {
-                      model.sendOTP();
-                    }
+                            model.sendOTP();
+                          }
                         : null,
                   ),
                 ]),
