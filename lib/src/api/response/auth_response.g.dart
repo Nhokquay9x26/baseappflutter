@@ -36,10 +36,6 @@ AuthResponse _$AuthResponseFromJson(Map<String, dynamic> json) {
     correct_answer: json['correct_answer'] as int,
     total_answer: json['total_answer'] as int,
     point: json['point'] as int,
-    survey_list: (json['survey_list'] as List)
-        ?.map((e) =>
-            e == null ? null : SurveryModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
   );
 }
 
@@ -57,5 +53,4 @@ Map<String, dynamic> _$AuthResponseToJson(AuthResponse instance) =>
       'correct_answer': instance.correct_answer,
       'total_answer': instance.total_answer,
       'point': instance.point,
-      'survey_list': instance.survey_list,
     };

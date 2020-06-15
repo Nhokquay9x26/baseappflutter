@@ -19,8 +19,8 @@ void main() async {
   Provider.debugCheckInvalidValueType = null;
   WidgetsFlutterBinding.ensureInitialized();
   setupLocator();
-  await locator<SharePrefs>().init();
   await PushNotificationsManager().init();
+  await locator<SharePrefs>().setup();
   runApp(MyApp());
 }
 
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
           title: 'Flutter',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(fontFamily: 'Roboto'),
-          initialRoute: RouterName.login ,
+          initialRoute: RouterName.login,
           onGenerateRoute: Routers.generateRoute,
           localizationsDelegates: [
             S.delegate,

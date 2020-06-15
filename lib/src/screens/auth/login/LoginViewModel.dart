@@ -18,8 +18,6 @@ class LoginViewModel extends ChangeNotifier {
   LoginViewModel(this.context);
 
   void initialise() {
-//    controllerUsername.text = 'test_mr';
-//    controllerPassword.text = '123456';
     controllerUsername.addListener(() {
       if (!formKey.currentState.validate()) {
         return;
@@ -59,7 +57,6 @@ class LoginViewModel extends ChangeNotifier {
       }
     }).catchError((onError) {
       Navigator.pop(context);
-//      showLongToast(onError);
       return print('error $onError');
     });
   }

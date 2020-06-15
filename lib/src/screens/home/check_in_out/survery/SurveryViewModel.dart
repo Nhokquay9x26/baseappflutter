@@ -14,10 +14,10 @@ class SurveryViewModel extends ChangeNotifier {
   List<SurveryModel> surveryList;
 
   void initialise() {
-    surveryList = Provider.of<MainProvider>(context, listen: false)
-        .authResponse
-        .survey_list;
-    notifyListeners();
+//    surveryList = Provider.of<MainProvider>(context, listen: false)
+//        .authResponse
+//        .survey_list;
+//    notifyListeners();
   }
 
   void onChangedRadio(int value) {}

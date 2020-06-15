@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:base/src/api/response/Meta.dart';
+import 'package:base/src/api/response/meta.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'base_response.g.dart';

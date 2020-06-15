@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import 'Meta.dart';
+import 'meta.dart';
 
 part 'otp_response.g.dart';
 

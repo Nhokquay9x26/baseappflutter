@@ -62,7 +62,7 @@ class HeaderProfileWidget extends ProviderWidget<DashboardViewModel> {
               height: width10,
             ),
             TextApp(
-              S.of(context).holiday_count(model.authResponse.holiday_total),
+              S.of(context).holiday_count(model.authResponse.holiday_total.toString()),
               style: TextStyle(fontSize: font12),
             )
           ],

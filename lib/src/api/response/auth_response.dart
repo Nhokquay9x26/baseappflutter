@@ -1,7 +1,6 @@
-import 'package:base/src/db/model/SurveryModel.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'Meta.dart';
+import 'meta.dart';
 
 part 'auth_response.g.dart';
 
@@ -32,7 +31,6 @@ class AuthResponse {
   final int correct_answer;
   final int total_answer;
   final int point;
-  final List<SurveryModel> survey_list;
 
   AuthResponse(
       {this.token,
@@ -46,8 +44,7 @@ class AuthResponse {
       this.kpi_total,
       this.correct_answer,
       this.total_answer,
-      this.point,
-      this.survey_list});
+      this.point});
 
   factory AuthResponse.fromJson(Map<String, dynamic> json) =>
       _$AuthResponseFromJson(json);

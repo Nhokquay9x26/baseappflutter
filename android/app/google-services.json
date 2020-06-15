@@ -8,24 +8,24 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:839750081455:android:1405c1ab4c6e8ed07b2d5a",
+        "mobilesdk_app_id": "1:839750081455:android:24060e208a1208777b2d5a",
         "android_client_info": {
           "package_name": "media.flutter.base"
         }
       },
       "oauth_client": [
         {
-          "client_id": "839750081455-ct4o6dnssp6p9tgb5u33qhc8d352mkmu.apps.googleusercontent.com",
+          "client_id": "839750081455-qfks10d2gnoam002dpeql901tnkvdmkj.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "media.flutter.base",
-            "certificate_hash": "e160321072321efc32f4f078443a124a12501520"
+            "certificate_hash": "869071af6bc1aabc33fb79fe80124025287bcdb9"
           }
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAFisKqNFgzmkNq_Sznqrmd0qJbI_MZtac"
+          "current_key": "AIzaSyBFYMVvhIUQ_yaM-i2rsrOLkXuSlrqfGCk"
         }
       ],
       "services": {
