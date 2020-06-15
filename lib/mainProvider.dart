@@ -20,16 +20,15 @@ class MainProvider extends ChangeNotifier {
   final sharePrefs = locator<SharePrefs>();
   AuthResponse authResponse;
   Map<String, dynamic> deviceData;
-  String token;
+  String get token => sharePrefs.token;
   final Api apiService = locator<Api>();
 
-  void initialise() async {
-    await initPlatformState();
+  void initialise() {
+    initPlatformState();
     initGeolocation();
-    token = sharePrefs.token;
     print("token start $token");
     if (token != null) {
-      await apiService.client
+      apiService.client
           .getProfile()
           .then((value) => {
                 if (value.meta.status)

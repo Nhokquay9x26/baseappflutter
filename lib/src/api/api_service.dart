@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:base/src/api/body/AuthBody.dart';
 import 'package:base/src/api/body/OTPBody.dart';
 import 'package:base/src/api/body/check_in_out_body.dart';
@@ -72,7 +74,9 @@ class Api {
     dio.interceptors
         .add(InterceptorsWrapper(onRequest: (RequestOptions options) async {
       options.headers['TOKEN'] = sharePrefs.token;
-
+      if (options.method == 'GET') {
+        options.contentType = null;
+      }
       return options;
     }, onResponse: (Response response) async {
 //          final lang = Locale(sharePrefs.lang);
@@ -80,31 +84,34 @@ class Api {
 //      Logger().d(
 //          '${response.request.uri.toString()}\n${jsonEncode(response.request.data)}\n ${jsonEncode(response.data['result'])}');
 //      print('Result ${response.data['result']}');
-//      if (response.request.method == 'GET') {
-//        return jsonEncode(response.data['result']);
-//      }
+      if (response.request.method == 'GET') {
+        return jsonDecode(response.data)['result'];
+      }
       return response.data['result'];
     }, onError: (DioError e) async {
+          print('error');
+          print(e.response.data);
+
       Logger().e(
           '${e.request.uri.toString()}\n${e.request.data}\n${e.message}\n${e.request.method}');
 //      final lang = Locale(sharePrefs.lang);
 //      S localization = await S.load(lang);
 
-//      if (e.response == null) {
-//        return DioError(
-//          request: e.request,
-//          response: e.response,
-//          type: DioErrorType.CONNECT_TIMEOUT,
-////            error: localization.message_miss_connection
-//        );
-//      }
-//
-//      return DioError(
-//        request: e.request,
-//        response: e.response,
-//        type: DioErrorType.RESPONSE,
-////          error: localization.message_process_failed
-//      );
+      if (e.response == null) {
+        return DioError(
+          request: e.request,
+          response: e.response,
+          type: DioErrorType.CONNECT_TIMEOUT,
+//            error: localization.message_miss_connection
+        );
+      }
+
+      return DioError(
+        request: e.request,
+        response: e.response,
+        type: DioErrorType.RESPONSE,
+//          error: localization.message_process_failed
+      );
       return e;
     }));
 

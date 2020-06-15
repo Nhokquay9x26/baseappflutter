@@ -34,7 +34,8 @@ class MyApp extends StatelessWidget {
           title: 'Flutter',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(fontFamily: 'Roboto'),
-          initialRoute: RouterName.login,
+          initialRoute:
+              model.token == null ? RouterName.login : RouterName.home,
           onGenerateRoute: Routers.generateRoute,
           localizationsDelegates: [
             S.delegate,
