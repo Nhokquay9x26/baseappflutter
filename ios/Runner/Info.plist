@@ -26,6 +26,16 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>io.flutter.embedded_views_preview</key>
+	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>Please enable position in my app</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Privacy - Photo Library Usage Description</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Privacy - Camera Usage Description</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Privacy - Microphone Usage Description</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

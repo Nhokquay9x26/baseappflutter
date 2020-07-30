@@ -3,11 +3,12 @@ import 'package:base/src/components/BaseComponent.dart';
 import 'package:flutter/material.dart';
 
 class TextApp extends BaseComponent {
-  const TextApp(this.text, {this.style, this.onTap});
+  const TextApp(this.text, {this.style, this.onTap, this.textAlign});
 
   final String text;
   final TextStyle style;
   final GestureTapCallback onTap;
+  final TextAlign textAlign;
 
   @override
   Widget buildApp(BuildContext context) {
@@ -16,8 +17,9 @@ class TextApp extends BaseComponent {
         onTap: onTap,
         child: Text(
           text,
+          textAlign: textAlign,
           style:
-              TextStyle(fontSize: font16, color: Colors.black54).merge(style),
+              TextStyle(fontSize: font16, color: Colors.black).merge(style),
         ));
   }
 }

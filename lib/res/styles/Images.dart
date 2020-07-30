@@ -1,0 +1,1 @@
+const logo = "lib/res/images/logo.jpeg";
