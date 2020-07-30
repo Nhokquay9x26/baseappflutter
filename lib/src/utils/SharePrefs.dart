@@ -3,6 +3,10 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharePrefs {
+  final String AUTH_MANAGER = 'auth_manager';
+  final String PREFS_LANGUAGE = 'language';
+  final String PREFS_TOKEN = 'token';
+
   SharedPreferences _prefs;
 
   DateTime get expiresDate {
@@ -20,23 +24,23 @@ class SharePrefs {
   }
 
   String get token {
-    if (!_prefs.containsKey('token')) {
+    if (!_prefs.containsKey(PREFS_TOKEN)) {
       return null;
     }
 
-    return _prefs.getString('token');
+    return _prefs.getString(PREFS_TOKEN);
   }
 
   set token(String token) {
-    _prefs.setString('token', token);
+    _prefs.setString(PREFS_TOKEN, token);
   }
 
   String get lang {
-    if (!_prefs.containsKey('lang')) {
+    if (!_prefs.containsKey(PREFS_LANGUAGE)) {
       return null;
     }
 
-    return _prefs.getString('lang');
+    return _prefs.getString(PREFS_LANGUAGE);
   }
 
   String get loginType {
@@ -66,7 +70,7 @@ class SharePrefs {
   }
 
   set lang(String lang) {
-    _prefs.setString('lang', lang);
+    _prefs.setString(PREFS_LANGUAGE, lang);
   }
 
   Map get user {
@@ -90,7 +94,7 @@ class SharePrefs {
   }
 
   void removeUser() {
-    _prefs.remove('token');
+    _prefs.remove(PREFS_TOKEN);
     _prefs.remove('expiresDate');
     _prefs.remove('user');
   }

@@ -8,8 +8,12 @@ import 'intl/messages_all.dart';
 // Made by Localizely
 // **************************************************************************
 
+// ignore_for_file: non_constant_identifier_names, lines_longer_than_80_chars
+
 class S {
   S();
+  
+  static S current;
   
   static const AppLocalizationDelegate delegate =
     AppLocalizationDelegate();
@@ -19,7 +23,9 @@ class S {
     final localeName = Intl.canonicalizedLocale(name); 
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
-      return S();
+      S.current = S();
+      
+      return S.current;
     });
   } 
 
@@ -27,6 +33,7 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `MR App`
   String get title {
     return Intl.message(
       'MR App',
@@ -36,6 +43,17 @@ class S {
     );
   }
 
+  /// `Loading ...`
+  String get loading {
+    return Intl.message(
+      'Loading ...',
+      name: 'loading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tên đăng nhập`
   String get username {
     return Intl.message(
       'Tên đăng nhập',
@@ -45,6 +63,7 @@ class S {
     );
   }
 
+  /// `Mật khẩu`
   String get password {
     return Intl.message(
       'Mật khẩu',
@@ -54,6 +73,7 @@ class S {
     );
   }
 
+  /// `Nhập lại mật khẩu`
   String get re_password {
     return Intl.message(
       'Nhập lại mật khẩu',
@@ -63,6 +83,7 @@ class S {
     );
   }
 
+  /// `Quên mật khẩu`
   String get forgot_password {
     return Intl.message(
       'Quên mật khẩu',
@@ -72,6 +93,7 @@ class S {
     );
   }
 
+  /// `Đăng nhập`
   String get login {
     return Intl.message(
       'Đăng nhập',
@@ -81,6 +103,17 @@ class S {
     );
   }
 
+  /// `Xác thực đăng nhập`
+  String get login_otp {
+    return Intl.message(
+      'Xác thực đăng nhập',
+      name: 'login_otp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Số điện thoại`
   String get phone {
     return Intl.message(
       'Số điện thoại',
@@ -90,6 +123,7 @@ class S {
     );
   }
 
+  /// `Vui lòng nhập {field}`
   String error_invalid(Object field) {
     return Intl.message(
       'Vui lòng nhập $field',
@@ -99,6 +133,7 @@ class S {
     );
   }
 
+  /// `{field} không đúng`
   String error_fail(Object field) {
     return Intl.message(
       '$field không đúng',
@@ -108,6 +143,7 @@ class S {
     );
   }
 
+  /// `Mật khẩu từ 6 ký tự trở lên`
   String get error_password_min_max {
     return Intl.message(
       'Mật khẩu từ 6 ký tự trở lên',
@@ -117,6 +153,7 @@ class S {
     );
   }
 
+  /// `Gửi OTP`
   String get send_otp {
     return Intl.message(
       'Gửi OTP',
@@ -126,6 +163,7 @@ class S {
     );
   }
 
+  /// `OTP`
   String get otp {
     return Intl.message(
       'OTP',
@@ -135,6 +173,7 @@ class S {
     );
   }
 
+  /// `Lấy lại mật khẩu`
   String get send_password {
     return Intl.message(
       'Lấy lại mật khẩu',
@@ -144,6 +183,7 @@ class S {
     );
   }
 
+  /// `Dashboard`
   String get dashboard {
     return Intl.message(
       'Dashboard',
@@ -153,6 +193,7 @@ class S {
     );
   }
 
+  /// `Vào/ ra ca`
   String get check_in_out {
     return Intl.message(
       'Vào/ ra ca',
@@ -162,6 +203,7 @@ class S {
     );
   }
 
+  /// `Lịch công`
   String get schedule {
     return Intl.message(
       'Lịch công',
@@ -171,6 +213,7 @@ class S {
     );
   }
 
+  /// `Lịch công`
   String get calendar {
     return Intl.message(
       'Lịch công',
@@ -180,6 +223,7 @@ class S {
     );
   }
 
+  /// `Báo cáo`
   String get report {
     return Intl.message(
       'Báo cáo',
@@ -189,6 +233,7 @@ class S {
     );
   }
 
+  /// `Phép năm còn lại {count}`
   String holiday_count(Object count) {
     return Intl.message(
       'Phép năm còn lại $count',
@@ -198,6 +243,7 @@ class S {
     );
   }
 
+  /// `Điểm kiến thức {score}`
   String score(Object score) {
     return Intl.message(
       'Điểm kiến thức $score',
@@ -207,6 +253,7 @@ class S {
     );
   }
 
+  /// `KPI:`
   String get kpi {
     return Intl.message(
       'KPI:',
@@ -216,6 +263,7 @@ class S {
     );
   }
 
+  /// `Phiếu lương`
   String get salary {
     return Intl.message(
       'Phiếu lương',
@@ -225,6 +273,7 @@ class S {
     );
   }
 
+  /// `Tên`
   String get salary_name {
     return Intl.message(
       'Tên',
@@ -234,6 +283,7 @@ class S {
     );
   }
 
+  /// `Loại`
   String get salary_category {
     return Intl.message(
       'Loại',
@@ -243,6 +293,7 @@ class S {
     );
   }
 
+  /// `Thành tiền`
   String get salary_amount {
     return Intl.message(
       'Thành tiền',
@@ -252,6 +303,7 @@ class S {
     );
   }
 
+  /// `Báo cáo`
   String get daily_report {
     return Intl.message(
       'Báo cáo',
@@ -261,6 +313,7 @@ class S {
     );
   }
 
+  /// `Field Work`
   String get field_work {
     return Intl.message(
       'Field Work',
@@ -270,6 +323,7 @@ class S {
     );
   }
 
+  /// `Quản lý yêu cầu`
   String get manager_requirement {
     return Intl.message(
       'Quản lý yêu cầu',
@@ -279,6 +333,7 @@ class S {
     );
   }
 
+  /// `Thông báo từ công ty`
   String get notification_company {
     return Intl.message(
       'Thông báo từ công ty',
@@ -288,6 +343,7 @@ class S {
     );
   }
 
+  /// `Quản lý phép`
   String get manager_holiday {
     return Intl.message(
       'Quản lý phép',
@@ -297,6 +353,7 @@ class S {
     );
   }
 
+  /// `Thống kê quên check in/out`
   String get manager_check_in_out {
     return Intl.message(
       'Thống kê quên check in/out',
@@ -306,6 +363,7 @@ class S {
     );
   }
 
+  /// `Tháng/Năm`
   String get month {
     return Intl.message(
       'Tháng/Năm',
@@ -315,6 +373,7 @@ class S {
     );
   }
 
+  /// `Check in`
   String get miss_check_in {
     return Intl.message(
       'Check in',
@@ -324,6 +383,7 @@ class S {
     );
   }
 
+  /// `Check out`
   String get miss_check_out {
     return Intl.message(
       'Check out',
@@ -333,6 +393,7 @@ class S {
     );
   }
 
+  /// `Check in/Out`
   String get miss_check_in_out {
     return Intl.message(
       'Check in/Out',
@@ -342,6 +403,7 @@ class S {
     );
   }
 
+  /// `Check In`
   String get check_in {
     return Intl.message(
       'Check In',
@@ -351,6 +413,7 @@ class S {
     );
   }
 
+  /// `Check Out`
   String get check_out {
     return Intl.message(
       'Check Out',
@@ -360,6 +423,7 @@ class S {
     );
   }
 
+  /// `Vui lòng selfie cùng với line hàng để bắt đầu vào ca`
   String get selfie_check_in_note {
     return Intl.message(
       'Vui lòng selfie cùng với line hàng để bắt đầu vào ca',
@@ -369,6 +433,7 @@ class S {
     );
   }
 
+  /// `Vui lòng selfie cùng với line hàng để bắt đầu ra ca`
   String get selfie_check_out_note {
     return Intl.message(
       'Vui lòng selfie cùng với line hàng để bắt đầu ra ca',
@@ -378,6 +443,7 @@ class S {
     );
   }
 
+  /// `Tiếp theo`
   String get next {
     return Intl.message(
       'Tiếp theo',
@@ -387,6 +453,7 @@ class S {
     );
   }
 
+  /// `Survery`
   String get survery {
     return Intl.message(
       'Survery',
@@ -396,6 +463,7 @@ class S {
     );
   }
 
+  /// `Bạn đã vào ca lúc : {time}`
   String check_in_time(Object time) {
     return Intl.message(
       'Bạn đã vào ca lúc : $time',
@@ -405,6 +473,7 @@ class S {
     );
   }
 
+  /// `Báo cáo doanh số`
   String get report_sale {
     return Intl.message(
       'Báo cáo doanh số',
@@ -414,6 +483,7 @@ class S {
     );
   }
 
+  /// `Báo cáo trưng bày`
   String get report_display {
     return Intl.message(
       'Báo cáo trưng bày',
@@ -423,6 +493,7 @@ class S {
     );
   }
 
+  /// `Báo cáo đối thủ`
   String get report_competitor {
     return Intl.message(
       'Báo cáo đối thủ',
@@ -432,6 +503,7 @@ class S {
     );
   }
 
+  /// `Báo cáo tiếp cận`
   String get report_approach {
     return Intl.message(
       'Báo cáo tiếp cận',
@@ -441,6 +513,7 @@ class S {
     );
   }
 
+  /// `Siêu thị`
   String get super_market {
     return Intl.message(
       'Siêu thị',
@@ -450,6 +523,7 @@ class S {
     );
   }
 
+  /// `Ngày`
   String get date {
     return Intl.message(
       'Ngày',
@@ -459,6 +533,7 @@ class S {
     );
   }
 
+  /// `Chọn ngày`
   String get choose_date {
     return Intl.message(
       'Chọn ngày',
@@ -468,6 +543,7 @@ class S {
     );
   }
 
+  /// `Thêm sản phẩm`
   String get add_product {
     return Intl.message(
       'Thêm sản phẩm',
@@ -477,6 +553,7 @@ class S {
     );
   }
 
+  /// `Tên sản phẩm`
   String get name_product {
     return Intl.message(
       'Tên sản phẩm',
@@ -486,6 +563,7 @@ class S {
     );
   }
 
+  /// `Số lượng`
   String get amount_product {
     return Intl.message(
       'Số lượng',
@@ -495,6 +573,7 @@ class S {
     );
   }
 
+  /// `Thành tiền`
   String get money_product {
     return Intl.message(
       'Thành tiền',
@@ -504,6 +583,7 @@ class S {
     );
   }
 
+  /// `Lưu & Đóng `
   String get save_close {
     return Intl.message(
       'Lưu & Đóng ',
@@ -513,6 +593,7 @@ class S {
     );
   }
 
+  /// `Lưu & Tạo mới`
   String get save_create {
     return Intl.message(
       'Lưu & Tạo mới',
@@ -522,6 +603,7 @@ class S {
     );
   }
 
+  /// `Tổng cộng : {all}`
   String total(Object all) {
     return Intl.message(
       'Tổng cộng : $all',
@@ -531,6 +613,7 @@ class S {
     );
   }
 
+  /// `Gửi báo cáo`
   String get send_report {
     return Intl.message(
       'Gửi báo cáo',
@@ -540,24 +623,27 @@ class S {
     );
   }
 
+  /// `Thông tin ngày nghỉ`
   String get holiday_infor {
     return Intl.message(
-      'Thông tin ngày nghĩ',
+      'Thông tin ngày nghỉ',
       name: 'holiday_infor',
       desc: '',
       args: [],
     );
   }
 
+  /// `Loại nghỉ phép`
   String get holiday_category {
     return Intl.message(
-      'Loại nghĩ phép',
+      'Loại nghỉ phép',
       name: 'holiday_category',
       desc: '',
       args: [],
     );
   }
 
+  /// `Tổng cộng`
   String get holiday_total {
     return Intl.message(
       'Tổng cộng',
@@ -567,24 +653,27 @@ class S {
     );
   }
 
+  /// `Đã nghỉ`
   String get holiday_used {
     return Intl.message(
-      'Đã nghĩ',
+      'Đã nghỉ',
       name: 'holiday_used',
       desc: '',
       args: [],
     );
   }
 
+  /// `Nghỉ việc`
   String get request_quit {
     return Intl.message(
-      'Nghĩ việc',
+      'Nghỉ việc',
       name: 'request_quit',
       desc: '',
       args: [],
     );
   }
 
+  /// `Đi sớm/ Về muộn`
   String get request_work_late {
     return Intl.message(
       'Đi sớm/ Về muộn',
@@ -594,6 +683,7 @@ class S {
     );
   }
 
+  /// `Thanh toán chi phí`
   String get request_pay {
     return Intl.message(
       'Thanh toán chi phí',
@@ -603,6 +693,7 @@ class S {
     );
   }
 
+  /// `Tạm ứng lương`
   String get request_advance_payment {
     return Intl.message(
       'Tạm ứng lương',
@@ -612,24 +703,27 @@ class S {
     );
   }
 
+  /// `Nghỉ phép`
   String get request_holiday {
     return Intl.message(
-      'Nghĩ phép',
+      'Nghỉ phép',
       name: 'request_holiday',
       desc: '',
       args: [],
     );
   }
 
+  /// `Lý do nghỉ`
   String get reason_quit_job {
     return Intl.message(
-      'Lý do nghĩ',
+      'Lý do nghỉ',
       name: 'reason_quit_job',
       desc: '',
       args: [],
     );
   }
 
+  /// `Giờ bắt đầu`
   String get time_start {
     return Intl.message(
       'Giờ bắt đầu',
@@ -639,6 +733,7 @@ class S {
     );
   }
 
+  /// `Giờ kết thúc`
   String get time_end {
     return Intl.message(
       'Giờ kết thúc',
@@ -648,6 +743,7 @@ class S {
     );
   }
 
+  /// `Gửi`
   String get send {
     return Intl.message(
       'Gửi',
@@ -657,6 +753,7 @@ class S {
     );
   }
 
+  /// `Số tiền`
   String get amount {
     return Intl.message(
       'Số tiền',
@@ -666,6 +763,7 @@ class S {
     );
   }
 
+  /// `Nội dung`
   String get content {
     return Intl.message(
       'Nội dung',
@@ -675,6 +773,7 @@ class S {
     );
   }
 
+  /// `Ngày bắt đầu`
   String get date_start {
     return Intl.message(
       'Ngày bắt đầu',
@@ -684,6 +783,7 @@ class S {
     );
   }
 
+  /// `Ngày kết thúc`
   String get date_end {
     return Intl.message(
       'Ngày kết thúc',
@@ -693,6 +793,7 @@ class S {
     );
   }
 
+  /// `Chọn tháng`
   String get choose_month {
     return Intl.message(
       'Chọn tháng',
@@ -702,6 +803,7 @@ class S {
     );
   }
 
+  /// `Kết nối mạng lỗi`
   String get message_miss_connection {
     return Intl.message(
       'Kết nối mạng lỗi',
@@ -711,6 +813,7 @@ class S {
     );
   }
 
+  /// `Kết nối mạng lỗi`
   String get message_process_failed {
     return Intl.message(
       'Kết nối mạng lỗi',

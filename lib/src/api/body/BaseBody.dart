@@ -1,5 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
 class BaseBody<T> {
-  final T params;
+  @JsonKey(name: 'params')
+  T params;
 
   BaseBody({this.params});
 
@@ -16,7 +19,7 @@ BaseBody<T> _$BaseBodyFromJson<T>(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$BaseBodyToJson<T>(BaseBody<T> instance) =>
     <String, dynamic>{
-      'data': instance.params,
+      'params': instance.params,
     };
 
 T _dataFromJson<T>(Map<String, dynamic> input) => input['params'] as T;

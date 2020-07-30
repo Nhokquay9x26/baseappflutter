@@ -15,12 +15,10 @@ class ForgotPasswordViewModel extends ChangeNotifier {
   ForgotPasswordViewModel(this.context);
 
   void initialise() {
-    controllerPhone.text = "0356858608";
     controllerPhone.addListener(() {
       if (!formKey.currentState.validate()) {
         return;
       }
-      notifyListeners();
     });
   }
 
@@ -33,14 +31,18 @@ class ForgotPasswordViewModel extends ChangeNotifier {
     final phone = controllerPhone.text;
     final body = PhoneBody();
     body.phone = phone;
-    await apiService.client
-        .postValidatePhone(body)
-        .then((value) => {
-              if (value.meta.status)
-                {Navigator.pushNamed(context, RouterName.otp)}
-              else
-                {showLongToast(value.meta.message)}
-            })
-        .catchError((onError) => print('error ${onError.toString()}'));
+    openLoadingDialog(context);
+    await apiService.client.postValidatePhone(body).then((value) {
+      Navigator.pop(context);
+      if (value.meta.status) {
+        showLongToast(value.data.otp);
+        Navigator.pushNamed(context, RouterName.otp);
+      } else {
+        showLongToast(value.meta.message);
+      }
+    }).catchError((onError) {
+      Navigator.pop(context);
+      return print('error $onError');
+    });
   }
 }

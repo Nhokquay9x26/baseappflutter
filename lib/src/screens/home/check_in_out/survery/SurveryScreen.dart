@@ -36,11 +36,11 @@ class SurveryScreen extends BaseApp {
                     child: Container(
                       margin: EdgeInsets.only(top: width10),
                       child: ListView.builder(
-                        itemCount: model.items.length,
+                        itemCount: model.surveryList.length,
                         itemBuilder: (context, index) {
                           return SurveryItem(
                             index: index,
-                            item: model.items[index],
+                            item: model.surveryList[index],
                           );
                         },
                       ),

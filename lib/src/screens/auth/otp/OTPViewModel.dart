@@ -19,13 +19,10 @@ class OTPViewModel extends ChangeNotifier {
   OTPViewModel(this.context);
 
   void initialise() {
-    controllerPassword.text = "123456";
-    controllerRePassword.text = "123456";
     controllerOtp.addListener(() {
       if (!formKey.currentState.validate()) {
         return;
       }
-      notifyListeners();
     });
     controllerPassword.addListener(() {
       if (!formKey.currentState.validate()) {
@@ -56,7 +53,8 @@ class OTPViewModel extends ChangeNotifier {
               if (value.meta.status)
                 {
                   showLongToast(value.meta.message),
-                  Navigator.pushReplacementNamed(context, RouterName.login)
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, RouterName.login, (_) => false)
                 }
               else
                 {showLongToast(value.meta.message)}

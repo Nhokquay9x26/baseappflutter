@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "839750081455",
+    "firebase_url": "https://rm-app-278301.firebaseio.com",
+    "project_id": "rm-app-278301",
+    "storage_bucket": "rm-app-278301.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:839750081455:android:24060e208a1208777b2d5a",
+        "android_client_info": {
+          "package_name": "media.flutter.base"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "839750081455-qfks10d2gnoam002dpeql901tnkvdmkj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "media.flutter.base",
+            "certificate_hash": "869071af6bc1aabc33fb79fe80124025287bcdb9"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFYMVvhIUQ_yaM-i2rsrOLkXuSlrqfGCk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "839750081455-2e5qt4v8u5ldako1ffsovd1a5g1pkpfj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mevacon.mvc"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

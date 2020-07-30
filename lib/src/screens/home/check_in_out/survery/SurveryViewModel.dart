@@ -1,5 +1,8 @@
-import 'package:base/src/api/response/SurveryResponse.dart';
+import 'package:base/src/db/model/SurveryModel.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
+
+import '../../../../../mainProvider.dart';
 
 class SurveryViewModel extends ChangeNotifier {
   BuildContext context;
@@ -8,16 +11,14 @@ class SurveryViewModel extends ChangeNotifier {
 
   int radioValue;
 
-  List<SurveryResponse> items = [
-    SurveryResponse(1, "Cau 1", "A", "B", "C", "D"),
-    SurveryResponse(2, "Cau 2", "A", "B", "C", "D"),
-    SurveryResponse(3, "Cau 3", "A", "B", "C", "D"),
-    SurveryResponse(4, "Cau 4", "A", "B", "C", "D"),
-    SurveryResponse(5, "Cau 5", "A", "B", "C", "D"),
-    SurveryResponse(6, "Cau 6", "A", "B", "C", "D"),
-  ];
+  List<SurveryModel> surveryList;
 
-  void initialise() {}
+  void initialise() {
+//    surveryList = Provider.of<MainProvider>(context, listen: false)
+//        .authResponse
+//        .survey_list;
+//    notifyListeners();
+  }
 
   void onChangedRadio(int value) {}
 }

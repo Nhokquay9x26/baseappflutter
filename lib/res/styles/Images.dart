@@ -1,1 +1,1 @@
-const logo = "lib/res/images/logo.jpeg";
+const logo = "lib/res/images/logo.png";
